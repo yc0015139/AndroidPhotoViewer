@@ -1,16 +1,14 @@
 package com.ycdev.myapplication;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import com.ycdev.myapplication.authorpage.AuthorPageFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, AuthorPageFragment.newInstance());
+        fragmentTransaction.commit();
     }
 
     @Override
