@@ -20,9 +20,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_container"
-        android:name="com.ycdev.myapplication.authorpage.AuthorPageFragment"
+        android:name="com.ycdev.myapplication.fragment.AuthorPageFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
