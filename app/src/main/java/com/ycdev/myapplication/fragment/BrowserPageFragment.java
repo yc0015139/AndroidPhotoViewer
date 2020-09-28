@@ -35,12 +35,14 @@ public class BrowserPageFragment extends Fragment {
 
         viewModel = new ViewModelProvider(this).get(BrowserPageViewModel.class);
         binding.setBrowserViewModel(viewModel);
+
         return binding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         viewModel.loadPhotos();
     }
 }

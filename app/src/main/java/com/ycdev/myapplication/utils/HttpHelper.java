@@ -28,7 +28,6 @@ public class HttpHelper {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
                 retResponse = response.body().string();
-                Log.d(TAG, "getResponse: response = " + retResponse);
             } else {
                 Log.d(TAG, "getResponse: Status code = " + response.message());
             }
