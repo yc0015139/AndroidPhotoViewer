@@ -26,6 +26,7 @@ public class HttpHelper {
         String retResponse = "";
         try {
             Response response = client.newCall(request).execute();
+            // TODO: Replace 'enqueue' with 'execute' for async thread
             if (response.isSuccessful()) {
                 retResponse = response.body().string();
             } else {

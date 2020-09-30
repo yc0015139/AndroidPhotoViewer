@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.ycdev.myapplication.R;
+import com.ycdev.myapplication.adapter.ImageAdapter;
 import com.ycdev.myapplication.databinding.BrowserPageFragmentBinding;
 import com.ycdev.myapplication.viewmodel.BrowserPageViewModel;
 
@@ -19,6 +20,8 @@ public class BrowserPageFragment extends Fragment {
 
     private BrowserPageViewModel viewModel;
     private BrowserPageFragmentBinding binding;
+    private ImageAdapter imageAdapter;
+
 
     public static BrowserPageFragment newInstance() {
         if (instance == null) {
@@ -43,6 +46,17 @@ public class BrowserPageFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        setUpRecyclerView();
         viewModel.loadPhotos();
     }
+
+    private void setUpRecyclerView() {
+        imageAdapter = new ImageAdapter();
+        binding.recyclerView.setAdapter(imageAdapter);
+
+        viewModel.getPhotos().observe(getViewLifecycleOwner(), photos -> {
+            imageAdapter.setPhotos(photos);
+        });
+    }
+
 }
