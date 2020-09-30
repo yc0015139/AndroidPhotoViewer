@@ -1,5 +1,7 @@
 package com.ycdev.myapplication.adapter;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ycdev.myapplication.R;
 import com.ycdev.myapplication.model.Photo;
+import com.ycdev.myapplication.utils.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +35,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageHolder>
         Photo photo = photos.get(position);
         holder.tvId.setText(String.valueOf(photo.getId()));
         holder.tvTitle.setText(photo.getTitle());
-//        holder.ivThumbnail.setImageURI(Uri.parse(photo.getThumbnailUrl()));
+
+        ImageLoader.getInstance().loadImageByUrl(holder.ivThumbnail, photo.getThumbnailUrl());
         // TODO: Add onClick event
     }
 
