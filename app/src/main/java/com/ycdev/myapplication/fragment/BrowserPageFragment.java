@@ -52,6 +52,7 @@ public class BrowserPageFragment extends Fragment {
 
     private void setUpRecyclerView() {
         imageAdapter = new ImageAdapter();
+        binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(imageAdapter);
 
         viewModel.getPhotos().observe(getViewLifecycleOwner(), photos -> {
