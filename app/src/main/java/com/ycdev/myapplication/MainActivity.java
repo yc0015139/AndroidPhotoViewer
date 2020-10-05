@@ -17,7 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        replaceFragment(AuthorPageFragment.newInstance());
+        if (savedInstanceState == null) {
+            replaceFragment(AuthorPageFragment.newInstance());
+        }
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -34,4 +36,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, fragment)
                 .commit();
     }
+
+
 }
