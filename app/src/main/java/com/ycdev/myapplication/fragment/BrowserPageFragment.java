@@ -10,12 +10,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.ycdev.myapplication.MainActivity;
 import com.ycdev.myapplication.R;
 import com.ycdev.myapplication.adapter.ImageAdapter;
 import com.ycdev.myapplication.databinding.BrowserPageFragmentBinding;
+import com.ycdev.myapplication.model.Photo;
 import com.ycdev.myapplication.viewmodel.BrowserPageViewModel;
+import com.ycdev.myapplication.viewmodel.PhotoViewModel;
 
-public class BrowserPageFragment extends Fragment {
+public class BrowserPageFragment extends Fragment implements ImageAdapter.OnImageClickListener {
     private static BrowserPageFragment instance;
 
     private BrowserPageViewModel viewModel;
@@ -36,7 +39,7 @@ public class BrowserPageFragment extends Fragment {
         View view = inflater.inflate(R.layout.browser_page_fragment, container, false);
         binding = BrowserPageFragmentBinding.bind(view);
 
-        viewModel = new ViewModelProvider(this).get(BrowserPageViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(BrowserPageViewModel.class);
         binding.setBrowserViewModel(viewModel);
 
         return binding.getRoot();
@@ -51,7 +54,7 @@ public class BrowserPageFragment extends Fragment {
     }
 
     private void setUpRecyclerView() {
-        imageAdapter = new ImageAdapter();
+        imageAdapter = new ImageAdapter(this);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(imageAdapter);
 
@@ -60,4 +63,11 @@ public class BrowserPageFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onImageClicked(Photo photo) {
+        PhotoViewModel photoViewModel = new ViewModelProvider(requireActivity()).get(PhotoViewModel.class);
+        photoViewModel.setPhoto(photo);
+
+        ((MainActivity) requireActivity()).replaceFragment(PhotoFragment.getInstance(), true);
+    }
 }
