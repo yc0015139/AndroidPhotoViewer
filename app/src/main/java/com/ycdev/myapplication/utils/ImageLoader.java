@@ -36,16 +36,19 @@ public class ImageLoader {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                ResponseBody responseBody = response.body();
-                InputStream inputStream = responseBody.byteStream();
-                BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-                Bitmap bitmap = BitmapFactory.decodeStream(bufferedInputStream);
+                Bitmap bitmap = getBitmapFromResponse(response);
 
                 uiHandler.post(() -> {
                     imageView.setImageBitmap(bitmap);
                 });
-
             }
         });
+    }
+
+    private Bitmap getBitmapFromResponse(Response response) {
+        ResponseBody responseBody = response.body();
+        InputStream inputStream = responseBody.byteStream();
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+        return BitmapFactory.decodeStream(bufferedInputStream);
     }
 }

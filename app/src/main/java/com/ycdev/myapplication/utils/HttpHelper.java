@@ -9,8 +9,6 @@ import okhttp3.Request;
 public class HttpHelper {
     public static final int TIMEOUT = 30;
 
-    private static final String TAG = HttpHelper.class.getSimpleName();
-
     public static void sendRequest(String url, Callback callback) {
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .connectTimeout(TIMEOUT, TimeUnit.SECONDS)

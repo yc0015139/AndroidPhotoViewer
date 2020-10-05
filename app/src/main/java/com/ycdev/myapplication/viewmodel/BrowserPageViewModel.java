@@ -1,7 +1,5 @@
 package com.ycdev.myapplication.viewmodel;
 
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -23,7 +21,7 @@ import okhttp3.Response;
 public class BrowserPageViewModel extends ViewModel {
     private static final String URL = "https://jsonplaceholder.typicode.com/photos";
 
-    public MutableLiveData<List<Photo>> photos = new MutableLiveData<>();
+    private MutableLiveData<List<Photo>> photos = new MutableLiveData<>();
 
     public void loadPhotos() {
         HttpHelper.sendRequest(URL, new Callback() {
