@@ -6,13 +6,18 @@
     <data>
 
         <variable
+            name="photoView"
+            type="com.ycdev.myapplication.fragment.PhotoFragment" />
+
+        <variable
             name="photoViewModel"
             type="com.ycdev.myapplication.viewmodel.PhotoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:onClick="@{() -> photoView.requireActivity().onBackPressed()}">
 
         <ImageView
             android:id="@+id/iv_image"

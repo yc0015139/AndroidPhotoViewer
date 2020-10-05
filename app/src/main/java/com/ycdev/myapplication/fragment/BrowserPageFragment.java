@@ -39,7 +39,7 @@ public class BrowserPageFragment extends Fragment implements ImageAdapter.OnImag
         View view = inflater.inflate(R.layout.browser_page_fragment, container, false);
         binding = BrowserPageFragmentBinding.bind(view);
 
-        viewModel = new ViewModelProvider(this).get(BrowserPageViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(BrowserPageViewModel.class);
         binding.setBrowserViewModel(viewModel);
 
         return binding.getRoot();
@@ -68,6 +68,6 @@ public class BrowserPageFragment extends Fragment implements ImageAdapter.OnImag
         PhotoViewModel photoViewModel = new ViewModelProvider(requireActivity()).get(PhotoViewModel.class);
         photoViewModel.setPhoto(photo);
 
-        ((MainActivity) getActivity()).replaceFragment(PhotoFragment.getInstance(), true);
+        ((MainActivity) requireActivity()).replaceFragment(PhotoFragment.getInstance(), true);
     }
 }

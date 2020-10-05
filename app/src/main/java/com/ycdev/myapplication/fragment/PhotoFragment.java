@@ -36,6 +36,7 @@ public class PhotoFragment extends Fragment {
 
         viewModel = new ViewModelProvider(requireActivity()).get(PhotoViewModel.class);
         binding.setPhotoViewModel(viewModel);
+        binding.setPhotoView(this);
 
         return binding.getRoot();
     }
