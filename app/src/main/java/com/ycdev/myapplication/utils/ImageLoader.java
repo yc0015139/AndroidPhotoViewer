@@ -16,6 +16,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import okhttp3.internal.cache.DiskLruCache;
 
 public class ImageLoader {
     private static ImageLoader instance;
@@ -28,6 +29,7 @@ public class ImageLoader {
             return value.getByteCount();
         }
     };
+    private DiskLruCache diskLruCache;
 
     public static ImageLoader getInstance() {
         if (instance == null) {
@@ -37,13 +39,41 @@ public class ImageLoader {
     }
 
     public void loadImageByUrl(ImageView imageView, String url) {
+        loadImageCacheOnMemory(imageView, url);
+    }
+
+    private void loadImageCacheOnMemory(ImageView imageView, String url) {
         Bitmap readBitmap = (Bitmap) lruCache.get(url);
 
         if (readBitmap == null) {
-            sendRequestAndUpdate(imageView, url);
+            loadImageCacheOnDisk(imageView, url);
         } else {
             updateImageViewByBitmap(imageView, readBitmap);
         }
+    }
+
+    private void loadImageCacheOnDisk(ImageView imageView, String url) {
+        if (readSnapshot(url) == null) {
+            sendRequestAndUpdate(imageView, url);
+        } else {
+            updateImageViewByBitmap(imageView, readBitmapFromDisk());
+        }
+    }
+
+    private DiskLruCache.Snapshot readSnapshot(String key) {
+        DiskLruCache.Snapshot snapshot = null;
+
+        try {
+            snapshot = diskLruCache.get(key);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return snapshot;
+    }
+
+    private Bitmap readBitmapFromDisk() {
+
     }
 
     private void sendRequestAndUpdate(ImageView imageView, String url) {
