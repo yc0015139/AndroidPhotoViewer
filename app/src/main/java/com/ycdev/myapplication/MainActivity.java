@@ -31,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (canAddToBackStack) {
             fragmentTransaction.addToBackStack("");
+            fragmentTransaction.add(R.id.fragment_container, fragment);
+        } else {
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
         }
 
-        fragmentTransaction.replace(R.id.fragment_container, fragment)
-                .commit();
+        fragmentTransaction.commit();
     }
 
 
