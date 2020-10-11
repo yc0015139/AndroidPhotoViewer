@@ -28,7 +28,7 @@ public class ImageLoader {
     }
 
     public void loadImageByUrl(ImageView imageView, String url) {
-        HttpHelper.sendRequest(url, new Callback() {
+        HttpHelper.getInstance().sendRequest(url, new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
