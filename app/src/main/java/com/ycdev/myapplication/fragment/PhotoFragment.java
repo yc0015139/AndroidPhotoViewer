@@ -52,9 +52,4 @@ public class PhotoFragment extends Fragment {
     public void backToPreviousPage() {
         this.requireActivity().onBackPressed();
     }
-    
-    @BindingAdapter({"imageUrl"})
-    public static void loadImage(ImageView imageView, String imageUrl) {
-        ImageLoader.getInstance().loadImageByUrl(imageView, imageUrl);
-    }
 }
