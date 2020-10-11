@@ -4,14 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.ycdev.myapplication.R;
 import com.ycdev.myapplication.databinding.PhotoFragmentBinding;
+import com.ycdev.myapplication.utils.ImageLoader;
 import com.ycdev.myapplication.viewmodel.PhotoViewModel;
 
 public class PhotoFragment extends Fragment {
@@ -44,5 +47,10 @@ public class PhotoFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @BindingAdapter({"imageUrl"})
+    public static void loadImage(ImageView imageView, String imageUrl) {
+        ImageLoader.getInstance().loadImageByUrl(imageView, imageUrl);
     }
 }
