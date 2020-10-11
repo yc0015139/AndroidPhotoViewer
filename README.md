@@ -23,7 +23,7 @@ Java, MVVM, Databinding, LiveData, Okhttp, Gson, etc.
 * 以 ListAdapter 取代 recyclerView 的 adapter
 * 以在 activity 中，以 Listener 的方式給 fragments 切換 fragment
     * https://developer.android.com/guide/components/fragments.html#CommunicatingWithActivity
-* PhotoPage 的 ViewModel 裡不應該出現 View components
+* ~~PhotoPage 的 ViewModel 裡不應該出現 View components~~
 * Grid 裡增加 binding
     * http://www.ravirupareliya.com/blog/recyclerview-with-android-databinding/
-* 修正相片瀏覽中，title 顯示過長的問題
+* ~~修正相片瀏覽中，title 顯示過長的問題~~
