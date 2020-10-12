@@ -5,15 +5,15 @@ https://jsonplaceholder.typicode.com/photos
 
 Java, MVVM, Databinding, LiveData, Okhttp, Gson, etc.
 
-## AuthorPage
+## AuthorPage (AuthorPageFragment)
 * 顯示名稱、按鈕
 * 按下按鈕跳至 PhotoViewerPage
 
-## PhotoViewerPage
+## BrowserPage (BrowserPageFragment)
 * 以格狀顯示 jsonplaceholder/photos 中所有 ```thumbnailUrl``` 的圖示，並於格中顯示 id, title
 * 點選任一格跳入 PhotoPage
 
-## PhotoPage
+## PhotoPage (PhotoFragment)
 * 以全頁顯示 PhotoViewerPage 所點選的圖示，並於中央顯示 id, title
 * 點選畫面返回 PhotoViewerPage
 
@@ -32,7 +32,7 @@ Java, MVVM, Databinding, LiveData, Okhttp, Gson, etc.
 ## Done
 * ~~Add lruCache and DiskCache for web image~~
     * ~~目前已加入 lruCache，但會因為 GC 導致資料要重取，正在加入 DiskCache 中~~
-    * 先前 lrucache 存放圖片大小數值設定錯誤，現已修正
+    * 先前 lruCache 存放圖片大小數值設定錯誤，現已修正
 * ~~PhotoPage 的 ViewModel 裡不應該出現 View components~~
 * ~~Grid 裡增加 binding~~
     * http://www.ravirupareliya.com/blog/recyclerview-with-android-databinding/
