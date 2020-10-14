@@ -24,7 +24,7 @@ public class BrowserPageViewModel extends ViewModel {
     private MutableLiveData<List<Photo>> photos = new MutableLiveData<>();
 
     public void loadPhotos() {
-        HttpHelper.sendRequest(URL, new Callback() {
+        HttpHelper.getInstance().sendRequest(URL, new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
